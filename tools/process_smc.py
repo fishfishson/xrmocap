@@ -147,7 +147,7 @@ def main(args):
                     image_array=image_array,
                     output_path=os.path.join(
                         args.output_dir,
-                        f'{smc_name}_projected' + f'_{view_idx:02d}.mp4'),
+                        f'{smc_name}_projected' + f'_{view_idx}.mp4'),
                     data_source=keypoints3d.get_convention(),
                     mask=keypoints3d.get_mask()[0, 0, ...],
                     overwrite=True)

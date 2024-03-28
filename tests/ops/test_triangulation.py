@@ -24,7 +24,7 @@ def test_aniposelib_triangulator():
     kps2d_list = []
     mask_list = []
     for view_idx in range(n_view):
-        npz_path = os.path.join(input_dir, f'keypoints_2d_{view_idx:02d}.npz')
+        npz_path = os.path.join(input_dir, f'keypoints_2d_{view_idx}.npz')
         npz_dict = dict(np.load(npz_path, allow_pickle=True))
         kps2d_list.append(npz_dict['keypoints'][0, 0, :, :])
         mask_list.append(npz_dict['mask'][0, 0, :])
@@ -32,7 +32,7 @@ def test_aniposelib_triangulator():
     kps2d_mask = np.asarray(mask_list, dtype=kps2d.dtype)
     cam_param_list = []
     for view_idx in range(n_view):
-        cam_param_path = os.path.join(input_dir, f'cam_{view_idx:03d}.json')
+        cam_param_path = os.path.join(input_dir, f'cam_{view_idx}.json')
         cam_param = PinholeCameraParameter()
         cam_param.load(cam_param_path)
         cam_param_list.append(cam_param)
@@ -128,7 +128,7 @@ def test_fourdag_triangulator():
     kps2d_list = []
     mask_list = []
     for view_idx in range(n_view):
-        npz_path = os.path.join(input_dir, f'keypoints_2d_{view_idx:02d}.npz')
+        npz_path = os.path.join(input_dir, f'keypoints_2d_{view_idx}.npz')
         npz_dict = dict(np.load(npz_path, allow_pickle=True))
         kps2d_list.append(npz_dict['keypoints'][0, 0, :, :])
         mask_list.append(npz_dict['mask'][0, 0, :])
@@ -136,7 +136,7 @@ def test_fourdag_triangulator():
     kps2d_mask = np.asarray(mask_list, dtype=kps2d.dtype)
     cam_param_list = []
     for view_idx in range(n_view):
-        cam_param_path = os.path.join(input_dir, f'cam_{view_idx:03d}.json')
+        cam_param_path = os.path.join(input_dir, f'cam_{view_idx}.json')
         cam_param = PinholeCameraParameter()
         cam_param.load(cam_param_path)
         cam_param_list.append(cam_param)

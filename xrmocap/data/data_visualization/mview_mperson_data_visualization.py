@@ -175,16 +175,16 @@ class MviewMpersonDataVisualization(BaseDataVisualization):
                 self.logger.info('Visualizing perception 2D data for' +
                                  f' scene {scene_idx} view {view_idx}')
             list_path = os.path.join(scene_dir,
-                                     f'image_list_view_{view_idx:02d}.txt')
+                                     f'image_list_view_{view_idx}.txt')
             with open(list_path, 'r') as f_read:
                 rela_path_list = f_read.readlines()
             frame_list = [
                 os.path.join(self.data_root, rela_path.strip())
                 for rela_path in rela_path_list
             ]
-            bbox = perception2d_dict[f'bbox2d_view_{view_idx:02d}']
-            kps2d = perception2d_dict[f'kps2d_view_{view_idx:02d}']
-            kps2d_mask = perception2d_dict[f'kps2d_mask_view_{view_idx:02d}']
+            bbox = perception2d_dict[f'bbox2d_view_{view_idx}']
+            kps2d = perception2d_dict[f'kps2d_view_{view_idx}']
+            kps2d_mask = perception2d_dict[f'kps2d_mask_view_{view_idx}']
             kps2d_convention = perception2d_dict['kps2d_convention'].item()
             for frame_idx, frame_bboxes in enumerate(bbox):
                 for person_idx, person_bbox in enumerate(frame_bboxes):
@@ -199,7 +199,7 @@ class MviewMpersonDataVisualization(BaseDataVisualization):
                     keypoints2d, dst=self.kps2d_convention, approximate=True)
             scene_vis_dir = os.path.join(self.output_dir, f'scene_{scene_idx}')
             video_path = os.path.join(scene_vis_dir,
-                                      f'perception2d_view_{view_idx:02d}.mp4')
+                                      f'perception2d_view_{view_idx}.mp4')
             plot_arr = visualize_keypoints2d(
                 keypoints=keypoints2d,
                 output_path=video_path,
@@ -244,7 +244,7 @@ class MviewMpersonDataVisualization(BaseDataVisualization):
                 self.logger.info('Visualizing perception 2D data for' +
                                  f' scene {scene_idx} view {view_idx}')
             list_path = os.path.join(scene_dir,
-                                     f'image_list_view_{view_idx:02d}.txt')
+                                     f'image_list_view_{view_idx}.txt')
             with open(list_path, 'r') as f_read:
                 rela_path_list = f_read.readlines()
             frame_list = [
@@ -261,7 +261,7 @@ class MviewMpersonDataVisualization(BaseDataVisualization):
                     keypoints2d, dst=self.kps2d_convention, approximate=True)
             scene_vis_dir = os.path.join(self.output_dir, f'scene_{scene_idx}')
             video_path = os.path.join(
-                scene_vis_dir, f'associate_kps2d_view_{view_idx:02d}.mp4')
+                scene_vis_dir, f'associate_kps2d_view_{view_idx}.mp4')
             plot_arr = visualize_keypoints2d(
                 keypoints=keypoints2d,
                 output_path=video_path,
@@ -343,9 +343,9 @@ class MviewMpersonDataVisualization(BaseDataVisualization):
                 self.logger.info(f'Visualizing {output_prefix} data for' +
                                  f' scene {scene_idx} view {view_idx}')
             fisheye_param = FisheyeCameraParameter.fromfile(
-                os.path.join(cam_dir, f'fisheye_param_{view_idx:02d}.json'))
+                os.path.join(cam_dir, f'fisheye_param_{view_idx}.json'))
             list_path = os.path.join(scene_dir,
-                                     f'image_list_view_{view_idx:02d}.txt')
+                                     f'image_list_view_{view_idx}.txt')
             with open(list_path, 'r') as f_read:
                 rela_path_list = f_read.readlines()
             frame_list = [
@@ -355,7 +355,7 @@ class MviewMpersonDataVisualization(BaseDataVisualization):
             scene_vis_dir = os.path.join(self.output_dir, f'scene_{scene_idx}')
             video_path = os.path.join(
                 scene_vis_dir,
-                f'{output_prefix}_project_view_{view_idx:02d}.mp4')
+                f'{output_prefix}_project_view_{view_idx}.mp4')
             plot_arr = visualize_project_keypoints3d(
                 keypoints=keypoints3d,
                 cam_param=fisheye_param,

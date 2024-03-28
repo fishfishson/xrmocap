@@ -219,7 +219,7 @@ class MviewMpersonDataset(BaseDataset):
                 view_idx = self.view_idxs[idx]
                 with open(
                         os.path.join(scene_dir,
-                                     f'image_list_view_{view_idx:02d}.txt'),
+                                     f'image_list_view_{view_idx}.txt'),
                         'r') as f_read:
                     lines = f_read.readlines()
                 mview_list.append(lines)
@@ -294,7 +294,7 @@ class MviewMpersonDataset(BaseDataset):
                 view_idx = self.view_idxs[idx]
                 fisheye_param = FisheyeCameraParameter.fromfile(
                     os.path.join(cam_dir,
-                                 f'fisheye_param_{view_idx:02d}.json'))
+                                 f'fisheye_param_{view_idx}.json'))
                 translation = self.factor * np.array(
                     fisheye_param.get_extrinsic_t())
                 fisheye_param.set_KRT(T=translation)
@@ -348,7 +348,7 @@ class MviewMpersonDataset(BaseDataset):
                 if self.bbox_convention is not None:
                     src_bbox_convention = perception2d_dict[
                         'bbox_convention'].item()
-                    bbox_arr = perception2d_dict[f'bbox2d_view_{view_idx:02d}']
+                    bbox_arr = perception2d_dict[f'bbox2d_view_{view_idx}']
                     if src_bbox_convention != self.bbox_convention:
                         bbox_arr = convert_bbox(
                             bbox_arr,
@@ -362,9 +362,9 @@ class MviewMpersonDataset(BaseDataset):
                 if self.kps2d_convention is not None:
                     src_kps2d_convention = perception2d_dict[
                         'kps2d_convention'].item()
-                    kps2d = perception2d_dict[f'kps2d_view_{view_idx:02d}']
+                    kps2d = perception2d_dict[f'kps2d_view_{view_idx}']
                     kps2d_mask = perception2d_dict[
-                        f'kps2d_mask_view_{view_idx:02d}']
+                        f'kps2d_mask_view_{view_idx}']
                     keypoints2d = Keypoints(
                         dtype='torch',
                         kps=kps2d,

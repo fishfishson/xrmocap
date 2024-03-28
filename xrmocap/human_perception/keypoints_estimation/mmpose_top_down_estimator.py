@@ -126,7 +126,8 @@ class MMposeTopDownEstimator:
             for frame_index in range(start_index, end_index, 1):
                 bboxes_in_frame = []
                 for idx, bbox in enumerate(bbox_list[frame_index]):
-                    if bbox[4] > 0.0:
+                    area = abs((bbox[2] - bbox[0]) * (bbox[3] - bbox[1]))
+                    if bbox[4] > 0.0 and area > 4096:
                         bboxes_in_frame.append({'bbox': bbox, 'id': idx})
                 person_results = bboxes_in_frame
             if not self.use_old_api:

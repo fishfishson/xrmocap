@@ -5,7 +5,7 @@ __meta_path__ = './xrmocap_data/chi3d/xrmocap_meta'
 __bbox_thr__ = 0.85
 
 logger = None
-output_dir = './output/mvpose_tracking/chi3d/'
+output_dir = './output/mvpose_tracking/chi3d'
 pred_kps3d_convention = 'coco'
 eval_kps3d_convention = 'openpose_25'
 metric_list = [

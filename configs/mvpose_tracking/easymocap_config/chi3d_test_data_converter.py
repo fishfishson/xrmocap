@@ -13,11 +13,12 @@ kps2d_estimator = dict(
         '_384x288_dark-f5726563_20200918.pth',
         config='configs/modules/human_perception/mmpose_hrnet_w48_' +
         'coco_wholebody_384x288_dark_plus.py',
-        device='cuda'))
+        device='cuda'),
+    bbox_thr=0.5)
 
 batch_size = 1000
 scene_names = [
-    's03'
+    's03_Hug 2'
 ]
 view_idxs = [
     '50591643',
@@ -26,5 +27,5 @@ view_idxs = [
     '65906101']
 frame_period = 1
 scene_range = 'all'
-meta_path = './xrmocap_data/chi3d/xrmocap_meta'
+meta_path = './xrmocap_data/chi3d_test/xrmocap_meta'
 visualize = True
